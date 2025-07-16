@@ -1,0 +1,45 @@
+{
+  "nodeName": "MufflerManOS_9305",
+  "location": "9305 S Orange Blossom Trail",
+  "vrEnabled": true,
+  "diagnosticsModule": true,
+  "technicianProfiles": true,
+  "pgeSync": true,
+  "createdAt": "2024-12-19T00:00:00.000Z",
+  "version": "1.0.0",
+  "modules": {
+    "core": {
+      "enabled": true,
+      "version": "1.0.0"
+    },
+    "diagnostics": {
+      "enabled": true,
+      "version": "1.0.0",
+      "features": ["obd2", "faultCodes", "vehicleScan"]
+    },
+    "assignments": {
+      "enabled": true,
+      "version": "1.0.0",
+      "features": ["jobQueue", "prioritySorting", "technicianMatching"]
+    },
+    "employees": {
+      "enabled": true,
+      "version": "1.0.0",
+      "features": ["profiles", "skills", "performance"]
+    },
+    "vrNode": {
+      "enabled": true,
+      "version": "1.0.0",
+      "features": ["shopLayout", "realTimeSync", "technicianGuidance"]
+    }
+  },
+  "network": {
+    "port": 3000,
+    "host": "localhost",
+    "cors": true
+  },
+  "database": {
+    "type": "sqlite",
+    "path": "./data/mufflermanos.db"
+  }
+} 
