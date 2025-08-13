@@ -31,6 +31,16 @@ npm run build
 npm start
 ```
 
+## 📊 Monitoring
+
+The server exposes a lightweight metrics endpoint for runtime insights:
+
+```
+GET /metrics
+```
+
+It reports process uptime, memory usage, and load averages for basic health dashboards or external monitoring agents.
+
 ## 📁 Project Structure
 
 ```

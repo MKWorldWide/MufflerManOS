@@ -18,6 +18,7 @@ import { VRNode } from './vr-node/vr-blueprint.js';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import os from 'os';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -138,6 +139,16 @@ class MufflerManOS {
       });
     });
 
+    // Runtime metrics for observability
+    this.app.get('/metrics', (_req, res) => {
+      const { rss, heapTotal, heapUsed, external } = process.memoryUsage();
+      res.json({
+        uptime: process.uptime(), // seconds since process start
+        memory: { rss, heapTotal, heapUsed, external }, // basic memory footprint
+        load: os.loadavg() // 1, 5 and 15 minute load averages
+      });
+    });
+
     // Genesis Engine routes
     this.app.get('/api/genesis/status', async (req, res) => {
       try {
@@ -238,6 +249,7 @@ class MufflerManOS {
         description: 'VR-synced control system for PGE mechanics node',
         endpoints: {
           health: '/health',
+          metrics: '/metrics',
           genesis: '/api/genesis',
           diagnostics: '/api/diagnostics',
           assignments: '/api/assignments',
