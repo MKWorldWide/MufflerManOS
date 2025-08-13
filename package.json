@@ -11,7 +11,7 @@
     "watch": "tsc --watch",
     "clean": "rimraf dist",
     "init": "node --loader ts-node/esm scripts/init-mufflermanos.ts",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write src/**/*.ts"
   },
